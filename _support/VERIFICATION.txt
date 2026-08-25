@@ -1,0 +1,29 @@
+Discord Voice Self-Bot V1.2.3 - File Log
+
+Changed:
+- Added rotating UTF-8 activity log at _support/logs/bot.log
+- CMD/ACTION/OK/ERROR/WHY events write to the log file
+- Voice join/move/leave steps and failure reasons are logged
+- Go Live detect/watch/stop and kstream control steps are logged
+- Sensitive fields such as token/secret/cookie/password/api_key are redacted
+- LOG_TO_TERMINAL=false by default so Terminal stays minimal
+- Log rotates at LOG_MAX_BYTES and keeps LOG_BACKUP_COUNT backups
+
+Default log configuration:
+LOG_FILE=_support/logs/bot.log
+LOG_TO_TERMINAL=false
+LOG_MAX_BYTES=2097152
+LOG_BACKUP_COUNT=3
+
+Verification:
+- python compileall: PASS
+- pytest: 18 passed
+- activity log write/redaction test: PASS
+- command error -> CMD/ERROR/WHY file log test: PASS
+- FastAPI health smoke: PASS
+
+Example log format:
+[YYYY-MM-DD HH:MM:SS.mmm][CMD]kjoin | user=... | guild=... | args=...
+[YYYY-MM-DD HH:MM:SS.mmm][ACTION]Resolve voice channel | guild=... | channel=...
+[YYYY-MM-DD HH:MM:SS.mmm][ERROR]Join voice failed | guild=... | channel=...
+[YYYY-MM-DD HH:MM:SS.mmm][WHY]Join voice failure reason | reason=...

@@ -1,0 +1,8 @@
+# Controller/runtime dependencies that can be resolved normally from PyPI.
+# Discord transport packages are installed separately by install-windows.bat
+# because discord-native-voice 0.1.1 declares discord.py-self>=2.2.0 while
+# the current discord.py-self master identifies itself as 2.2.0a0.
+fastapi>=0.116,<1
+uvicorn[standard]>=0.35,<1
+python-dotenv>=1.1,<2
+davey>=0.1.6
